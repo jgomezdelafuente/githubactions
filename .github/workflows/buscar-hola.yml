@@ -1,0 +1,23 @@
+name: Validar texto "hola" en PRs
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  buscar-hola:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Buscar texto "hola" con Python
+        run: python scripts/buscar_hola.py
+
